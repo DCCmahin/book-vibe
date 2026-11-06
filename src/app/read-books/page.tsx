@@ -41,8 +41,8 @@ const CustomColorLabel = (props: LabelProps) => {
 
 const ReadBookspage = () => {
   //data chat formete dekhalam
-  const { readbooks } = useContext(BooksContext)
-  const data = readbooks.map((book: Ttype, ind: number) => {
+  const { readbooks } = useContext(BooksContext) as { readbooks: Ttype[] }
+  const data = readbooks.map((book: Ttype) => {
     return {
       name: book.bookName,
       uv: book.totalPages,

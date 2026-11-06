@@ -1,6 +1,6 @@
 
 'use client'
-import BookCard from '@/components/shared/BookCard';
+
 import BookDetailCard from '@/components/shared/BookDetailCard';
 import { BooksContext } from '@/context/BookContext';
 import { Ttype } from '@/type/Datatype';
@@ -8,7 +8,11 @@ import { Ttype } from '@/type/Datatype';
 import React, { useContext } from 'react';
 
 const Listedpage = () => {
-    const { readbooks, wishlist } = useContext(BooksContext)
+    const { readbooks, wishlist } = useContext(BooksContext)as {
+        readbooks: Ttype[];
+        wishlist: Ttype[];
+    }
+    
 
         console.log(readbooks, wishlist)
           return(

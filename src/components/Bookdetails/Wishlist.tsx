@@ -7,7 +7,10 @@ import { toast } from 'react-toastify';
 
 const Wishlist = ({ book }: { book: Ttype }) => {
 
-    const { wishlist, setwishlist } = useContext(BooksContext)
+    const { wishlist, setwishlist } = useContext(BooksContext) as {
+        wishlist: Ttype[];
+        setwishlist: React.Dispatch<React.SetStateAction<Ttype[]>>;
+    }
     const handelWishlist = () => {
 
         setwishlist([...wishlist, book])

@@ -2,14 +2,17 @@
 
 import { BooksContext } from "@/context/BookContext";
 import { Ttype } from "@/type/Datatype";
-import { useContext } from "react";
+import { useContext, type Dispatch, type SetStateAction } from "react";
 import { toast } from "react-toastify";
 
 const ReadButton = ({book}:{book:Ttype}) => {
     //  first e ussecontext diye data paite hibe 
     //boookContext e  readbooks setreadbooks object akare payhaichi oita distructring kore nibo 
  
-const {readbooks,setreadbooks}=useContext(BooksContext)
+const { readbooks, setreadbooks } = useContext(BooksContext) as {
+    readbooks: Ttype[];
+    setreadbooks: Dispatch<SetStateAction<Ttype[]>>;
+};
 
     const handelReadBook=()=>{
         console.log('read book tigger')
