@@ -3,12 +3,20 @@ import BookCard from '../shared/BookCard';
 
 
 
+
 // data fratchig
 
 const getData = async () => {
-    const res = await fetch('http://localhost:3000/booksData.json')
-    const data = await res.json()
-    return data
+//trycas blog error handel
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`)
+        const data = await res.json()
+        return data
+    }catch(error){
+        console.error('error featching data book:',error)
+        return[]
+    }
+   
 }
 
 const Books = async () => {
@@ -37,7 +45,7 @@ const Books = async () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
 
                 {
-                    bookdata.slice(0,6).map((book: Ttype, ind: number) => {
+                    bookdata.slice(0, 6).map((book: Ttype, ind: number) => {
                         return <BookCard key={ind} book={book}></BookCard>
                     })
                 }

@@ -80,15 +80,32 @@ interface IbookDetailsPage {
     }>
 }
 
+
+
 const getData = async () => {
-    const res = await fetch('http://localhost:3000/booksData.json');
-
-    if (!res.ok) {
-        throw new Error('Failed to fetch books data');
+//trycas blog error handel
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`)
+        const data = await res.json()
+        return data
+    }catch(error){
+        console.error('error featching data book:',error)
+        return[]
     }
-
-    return res.json();
+   
 }
+
+
+
+// const getData = async () => {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`)
+
+//     if (!res.ok) {
+//         throw new Error('Failed to fetch books data');
+//     }
+
+//     return res.json();
+// }
 
 const DetailsPage = async ({ params }: IbookDetailsPage) => {
 

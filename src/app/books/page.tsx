@@ -6,11 +6,27 @@ import { Ttype } from '@/type/Datatype';
 
 // data fratchig
 
+// const getData = async () => {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`)
+//     const data = await res.json()
+//     return data
+// }
+
+
+
 const getData = async () => {
-    const res = await fetch('http://localhost:3000/booksData.json')
-    const data = await res.json()
-    return data
+//trycas blog error handel
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`)
+        const data = await res.json()
+        return data
+    }catch(error){
+        console.error('error featching data book:',error)
+        return[]
+    }
+   
 }
+
 
 const Books = async () => {
 
